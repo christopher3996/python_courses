@@ -1,6 +1,20 @@
 # Grundlagen der Programmierung
 Herzlich Willkommen zum Kurs "Gundlagen der Programmierung" mit Python. Dieses Repository umfasst die Aufgaben für das Modul "Digitalisierung in Unternehmen" an der Hochschule für Wirtschaft und Recht Berlin. Dieser Kurs wird erstmalig im Wintersemester 2020/21 gelehrt.
 
+## Inhalt
+Folgende Dokumente befinden sich in diesem Repository:
+```
+.
+├── 0_02_Basisoperationen.ipynb           # Colab Notebook mit Einführungsübungen 
+├── 0_03_Kontrollstrukturen_I.ipynb       # Colab Notebook mit If-Else Übungen 
+├── 0_04_Listen_und_Tupel.ipynb           # Colab Notebook zu Listen und Tupeln
+├── 0_05_Kontrollstrukturen_II.ipynb      # Colab Notebook mit Übungen zu Schleifen
+├── 0_06_Funktionen_und_Prozeduren.ipynb  # Colab Notebook zur Definition von Funktionen
+├── 0_07_OOP_und_Bibliotheken.ipynb       # Colab Notebook mit Beispielen der Objektorientierung
+└── README.md                             # dieses readme file
+
+```
+
 ## Wie kann ich ein Notebook öffnen?
 Am besten klicken Sie auf das jeweilige Notebook und navigieren sich über den Button "Open in Colab" direkt zu Google Colab. Achten Sie darauf, dass Sie ihre Ergebnisse auch im Anschluss bei sich im Homeverzeichnis speichern.
 
