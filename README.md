@@ -5,12 +5,11 @@ Herzlich Willkommen zum Kurs "Gundlagen der Programmierung" mit Python. Dieses R
 Folgende Dokumente befinden sich in diesem Repository:
 ```
 .
-├── 0_02_Basisoperationen.ipynb           # Colab Notebook mit Einführungsübungen 
-├── 0_03_Kontrollstrukturen_I.ipynb       # Colab Notebook mit If-Else Übungen 
-├── 0_04_Listen_und_Tupel.ipynb           # Colab Notebook zu Listen und Tupeln
-├── 0_05_Kontrollstrukturen_II.ipynb      # Colab Notebook mit Übungen zu Schleifen
-├── 0_06_Funktionen_und_Prozeduren.ipynb  # Colab Notebook zur Definition von Funktionen
-├── 0_07_OOP_und_Bibliotheken.ipynb       # Colab Notebook mit Beispielen der Objektorientierung
+├── 01_Basisoperationen.ipynb           # Colab Notebook mit Einführungsübungen 
+├── 02_Kontrollstrukturen_I.ipynb       # Colab Notebook mit If-Else Übungen 
+├── 03_Listen_und_Tupel.ipynb           # Colab Notebook zu Listen und Tupeln
+├── 04_Kontrollstrukturen_II.ipynb      # Colab Notebook mit Übungen zu Schleifen
+├── 05_Funktionen_und_Bibliotheken.ipynb  # Colab Notebook zur Definition von Funktionen
 └── README.md                             # dieses readme file
 
 ```
