@@ -1,0 +1,327 @@
+% !TeX program = pdflatex
+\documentclass[9pt,a4paper]{extarticle}
+\input{gestaltung.tex}
+\begin{document}
+\fontsize{8.1}{9.4}\selectfont
+\kopf
+\begin{minipage}[t][242mm][s]{.489\textwidth}\vspace{0pt}
+\begin{karte}{01\enspace Werte, Typen und Wertzuweisung}
+\begin{lstlisting}
+anzahl = 3                  # int: ganze Zahl
+zins = 0.025                # float: Dezimalzahl
+name = "Alice"              # str: Zeichenkette
+aktiv = True                # bool: Wahrheitswert
+werte = [100, 50, 25]       # list: Liste
+punkt = (3, 4)              # tuple: Tupel
+\end{lstlisting}
+\py{type(zins)} ermittelt den Typ: \py{float}.\par
+\textbf{Wertzuweisung mit dem Zeichen \py{=}}\par Den Ausdruck rechts auswerten und den Wert dem Variablennamen links zuweisen.
+\begin{lstlisting}
+tageslimit = 30000
+bereits_genutzt = 10000
+restlimit = tageslimit - bereits_genutzt
+anzahl = anzahl + 1         # bisherigen Wert erhöhen
+\end{lstlisting}
+Namen: \py{kunde_2}, nicht \py{2kunde}. Groß-/Kleinschreibung zählt. Schlüsselwörter und Namen wie \py{print} nicht als eigene Variablennamen verwenden.
+\end{karte}
+\vfill
+\begin{karte}{02\enspace Eingabe, Konvertierung, Ausgabe}
+\begin{lstlisting}
+name = input("Name: ")
+alter = int(input("Alter: "))
+betrag = float(input("Betrag: "))
+print("Hallo " + name)
+print("Alter: " + str(alter))
+\end{lstlisting}
+\textbf{\py{input()} liefert immer Text.} Für Rechnungen zunächst in eine Zahl konvertieren. Gültige Zahleneingaben vorausgesetzt; Dezimalpunkt statt Komma.
+\begin{tabelle}{l X}
+\py{int("12")} & \py{12}: ganze Zahl \\
+\py{int(12.9)} & \py{12}: Nachkommastellen abschneiden \\
+\py{float("12.5")} & \py{12.5}: Fließkommazahl \\
+\py{str(12)} & \py{"12"}: Zeichenkette \\
+\end{tabelle}
+\begin{lstlisting}
+print("12" + "3")           # 123: Text verbinden
+print(12 + 3)               # 15: Zahlen addieren
+print("Betrag: " + str(12.5))
+\end{lstlisting}
+Bei \py{+} entweder \textbf{zwei Strings verketten} oder \textbf{zwei Zahlen addieren}.\par Zahlen für Textausgaben mit \py{str(...)} konvertieren.\par Leerzeichen in den String schreiben, z.\,B. \py{"Hallo "}.
+\end{karte}
+\vfill
+\begin{karte}{03\enspace Rechnen mit Zahlen}
+\begin{tabelle}{l X l}
+\textbf{Operator} & \textbf{Bedeutung} & \textbf{Beispiel} \\
+\py{+ - *} & plus, minus, mal & \py{7 * 3} $\to$ \py{21} \\
+\py{/} & Division & \py{6 / 3} $\to$ \py{2.0} \\
+\py{//} & Quotient, abgerundet & \py{7 // 3} $\to$ \py{2} \\
+\texttt{\%} & Rest (Modulo) & \texttt{7 \% 3} $\to$ \py{1} \\
+\py{**} & Potenz & \py{2 ** 3} $\to$ \py{8} \\
+\end{tabelle}
+\textbf{Klammern zuerst}, dann Potenzen, Punkt- und Strichrechnung. Zahlen können auch in Variablen stehen; mit ihnen wird genauso gerechnet.
+\end{karte}
+\vfill
+\begin{karte}{04\enspace Strings bearbeiten}
+\py{"..."} und \py{'...'} kennzeichnen Zeichenketten.
+\begin{lstlisting}
+text = "HWR Berlin"
+text.upper()                # "HWR BERLIN"
+text.lower()                # "hwr berlin"
+text.replace("HWR", "Uni")  # "Uni Berlin"
+text.split()                # ["HWR", "Berlin"]
+\end{lstlisting}
+\textbf{Strings sind unveränderbar.} Das bedeutet: Die Aufrufe liefern einen neuen String (bei \py{split()} eine Liste); der bisherige Wert von \py{text} bleibt erhalten. Ausgabe mit \py{print(...)}.\par
+\textbf{Zur dauerhaften Speicherung} das Ergebnis wieder der Variablen zuweisen:
+\begin{lstlisting}
+text = text.lower()
+text                        # "hwr berlin"
+\end{lstlisting}
+\end{karte}
+\end{minipage}\hfill
+\begin{minipage}[t][242mm][s]{.489\textwidth}\vspace{0pt}
+\begin{karte}{05\enspace Vergleiche und Aussagenlogik}
+\begin{tabelle}{l X}
+\py{==} / \py{!=} & gleich / ungleich \\
+\py{< <= > >=} & kleiner, kleiner gleich, größer, größer gleich \\
+\py{x in folge} & enthalten? Auch Teiltext: \py{"B" in "Bank"} \\
+\py{x not in folge} & nicht enthalten? \\
+\end{tabelle}
+\smallskip
+\textbf{Nicht verwechseln:} \py{=} weist einen Wert zu; \py{==} prüft, ob zwei Werte gleich sind.\par\smallskip
+\begin{tabularx}{\linewidth}{@{}XX|XXX@{}}
+\textbf{a} & \textbf{b} & \textbf{not a} & \textbf{a and b} & \textbf{a or b} \\
+False & False & True & False & False \\
+False & True & True & False & True \\
+True & False & False & False & True \\
+True & True & False & True & True \\
+\end{tabularx}
+\smallskip
+\py{not} kehrt um; \py{and} verlangt zwei wahre Aussagen.\par
+\textbf{\py{or} ist ein inklusives Oder:} Mindestens eine Aussage ist wahr; beide dürfen wahr sein.\par
+\textbf{Reihenfolge:} zuerst Klammern, dann \py{not}, \py{and}, \py{or}. Vergleiche bilden dabei die Teilaussagen.\par\smallskip
+Beide Seiten vollständig formulieren:\par
+\textbf{Richtig}\quad \py{x == 5 or x == 7}\par
+\textbf{Falsch}\quad \py{x == 5 or 7}
+\end{karte}
+\vfill
+\begin{karte}{06\enspace Verzweigungen: if und else}
+Eine \textbf{Bedingung} ist z.\,B. ein Vergleich oder eine Verknüpfung aus Kasten 05. Hier sei \py{saldo = -20}.\par\smallskip
+\begin{lstlisting}
+if saldo < 0:
+    print("negativ")
+else:
+    print("ab null")
+\end{lstlisting}
+\textbf{Doppelpunkt + Einrückung} bilden einen Block. Üblich sind vier Leerzeichen pro Ebene. \py{else} steht auf derselben Ebene wie das zugehörige \py{if}.\par
+Bedingung wahr: \py{if}-Block; sonst: \py{else}-Block. Ohne \py{else} geht es bei falscher Bedingung nach dem Block weiter. Einzelne \py{if} werden unabhängig geprüft.
+\end{karte}
+\vfill
+\begin{karte}{07\enspace Zeichenketten prüfen}
+\begin{tabelle}{l X}
+\py{text.isalpha()} & nur Buchstaben, auch Umlaute \\
+\py{text.isalnum()} & nur Buchstaben / numerische Zeichen \\
+\py{text.isdigit()} & nur Ziffern \\
+\py{text.islower()} & alle Buchstaben klein \\
+\py{text.isupper()} & alle Buchstaben groß \\
+\end{tabelle}
+Die ersten drei verlangen mindestens ein Zeichen; \py{islower()} und \py{isupper()} mindestens einen Buchstaben mit Groß-/Kleinschreibung. Leere Strings liefern \py{False}.\par
+\textbf{Leerzeichen zählen hier als Sonderzeichen:} Sie sind weder Buchstaben noch Ziffern; \py{isalnum()} liefert dann \py{False}. Dasselbe gilt für Satzzeichen.
+\begin{lstlisting}
+text = "HWR Berlin"
+print(text.isalnum())       # False: Leerzeichen
+print("HWR123".isalnum())   # True
+print("Berlin".isalpha())   # True
+print("HWR 123".isupper())  # True
+\end{lstlisting}
+\py{isupper()} ignoriert z.\,B. Leerzeichen und Ziffern; es prüft die Groß-/Kleinschreibung der Buchstaben.
+\end{karte}
+\vfill
+\begin{karte}{08\enspace Kommentare}
+\texttt{\#} beginnt außerhalb eines Strings einen Kommentar. Python ignoriert den Rest dieser Zeile.
+\begin{lstlisting}
+betrag = 120                # Rechnungsbetrag in Euro
+\end{lstlisting}
+Kommentare erklären den Code oder zeigen hier das erwartete Ergebnis. Sie werden nicht ausgegeben.
+\end{karte}
+\end{minipage}
+\newpage
+\renewcommand{\arraystretch}{1.0}
+\fontsize{7.7}{8.8}\selectfont
+\lstset{basicstyle=\ttfamily\fontsize{7.4}{8.2}\selectfont\color{ink}}
+\kopf
+\begin{minipage}[t][255mm][s]{.489\textwidth}\vspace{0pt}
+\begin{karte}{09\enspace Folgen: Indexierung und Slicing}
+\textbf{Strings, Listen und Tupel sind geordnete Folgen.} Ihre Elemente sind über Positionen (Indizes) erreichbar.
+\begin{center}
+\begin{tikzpicture}[x=8mm,y=5mm,font=\sffamily\fontsize{8}{9}\selectfont]
+\node[anchor=east] at (-.65,0) {\py{text =}};
+\foreach \i/\ch/\neg in {0/B/-6,1/e/-5,2/r/-4,3/l/-3,4/i/-2,5/n/-1}{
+\node[draw=rule,fill=paper,minimum width=7.6mm,minimum height=6mm,font=\ttfamily\bfseries] at (\i,0) {\ch};
+\node at (\i,-1) {\i};\node at (\i,-1.8) {\neg};}
+\node[anchor=east] at (-.65,-1) {Index};
+\node[anchor=east] at (-.65,-1.8) {Negativer Index};
+\end{tikzpicture}
+\end{center}\vspace{-2mm}
+\begin{lstlisting}
+text = "Berlin"
+text[0]                     # "B"
+text[-1]                    # "n"
+
+werte = [10, 20, 30, 40, 50]
+werte[1]                    # 20
+\end{lstlisting}
+\textbf{Ab 0 zählen.} \py{-1} bezeichnet das letzte Element; sein positiver Index ist \py{len(folge)-1}.\par\smallskip
+\textbf{Slicing mit \py{folge[start:ende]}}\par Start enthalten, Ende ausgeschlossen.\par Die Grenzen liegen zwischen den Elementen:
+\begin{center}
+\begin{tikzpicture}[x=8mm,y=5mm,font=\sffamily\fontsize{8}{9}\selectfont]
+\node[anchor=east] at (-.7,0) {\py{text =}};
+\foreach \i/\ch in {0/B,1/e,2/r,3/l,4/i,5/n}{
+\ifnum\i>0\ifnum\i<4
+\fill[accent!20] (\i-.5,-.5) rectangle (\i+.5,.5);
+\fi\fi
+\node[font=\ttfamily\bfseries] at (\i,0) {\ch};}
+\foreach \j in {0,...,6}{\draw[rule] (\j-.5,-.5)--(\j-.5,.5);\node at (\j-.5,-1) {\j};}
+\draw[ink,thick] (.5,-.5)--(.5,.5);\draw[ink,thick] (3.5,-.5)--(3.5,.5);
+\node[anchor=east] at (-.7,-1) {Grenze};
+\end{tikzpicture}
+\end{center}\vspace{-2mm}
+\begin{lstlisting}
+text[1:4]                   # "erl"
+text[:3]                    # "Ber"
+text[3:]                    # "lin"
+text[::2]                   # "Bri"
+text[::-1]                  # "nilreB"
+werte[1:3]                  # [20, 30]
+\end{lstlisting}
+\py{folge[start:ende:schritt]} ergänzt die Schrittweite. Ohne Grenzen: gesamte Folge; ohne Schritt: 1.
+\end{karte}
+\vfill
+\begin{karte}{10\enspace Generische Operationen auf Folgen}
+\py{folge} steht für einen String, eine Liste oder ein Tupel. Die Elemente müssen zur Operation passen; zum Vergleichen und Sortieren müssen sie vergleichbar sein.
+\begin{tabelle}{l X}
+\py{len(folge)} & Anzahl der Elemente / Zeichen \\
+\py{x in folge} & Mitgliedschaft; bei Strings auch Teiltext \\
+\py{folge.count(x)} & Anzahl der Vorkommen \\
+\py{folge.index(x)} & erste Position; Wert muss vorkommen \\
+\py{min(folge)} & kleinster Wert; Folge nicht leer \\
+\py{max(folge)} & größter Wert; Folge nicht leer \\
+\py{sorted(folge)} & neue sortierte \textbf{Liste} \\
+\py{sum(folge)} & Summe \textbf{numerischer} Elemente \\
+\end{tabelle}
+\par\smallskip
+\textbf{Absteigend sortieren}\par
+\py{sorted(folge, reverse=True)}
+\end{karte}
+\vfill
+\begin{karte}{11\enspace Listen anlegen und verändern}
+\begin{lstlisting}
+a = []                      # leere Liste
+a = [7, 2, 5]               # Liste mit drei Elementen
+\end{lstlisting}
+\textbf{Listen sind veränderbar.} Die folgenden Operationen bearbeiten die bestehende Liste.\par\smallskip
+\begin{tabelle}{l X}
+\py{a[i] = x} & Element an Index \py{i} ersetzen \\
+\py{a.append(x)} & ein Element hinten anhängen \\
+\py{a.insert(i, x)} & vor Index \py{i} einfügen \\
+\py{a.remove(x)} & erstes Vorkommen des Wertes entfernen \\
+\py{x = a.pop()} & letztes Element entfernen \textbf{und liefern} \\
+\py{a.pop(i)} & Element an Index \py{i} entfernen / liefern \\
+\py{del a[i]} & Element an Index \py{i} löschen \\
+\py{a.sort()} & Liste selbst aufsteigend sortieren \\
+\end{tabelle}
+\par\smallskip
+\py{del a} entfernt den Variablennamen.\par
+Im Unterschied zu \py{a.sort()} liefert \py{sorted(a)} eine neue sortierte Liste; \py{a} bleibt dabei unverändert.
+\end{karte}
+
+\vfill
+\begin{karte}{12\enspace Tabellen: Liste von Zeilen}
+Spalten: Sender, Empfänger, Betrag, Währung.
+\begin{lstlisting}
+tx = [["Alice", "Bob", 100.0, "EUR"],
+      ["Fred", "Bob", 18.36, "EUR"]]
+tx[0][2]                    # 100.0
+tx[0][2] = 125.0            # Zelle ändern
+tx.append(["Harry", "Bob", 50.0, "USD"])
+storniert = tx.pop()        # letzte Zeile entfernen
+\end{lstlisting}
+\py{tabelle[zeile][spalte]} wählt erst die Zeile, dann die Spalte; beide ab 0. Eine Kopfzeile wird mitgezählt.
+\end{karte}
+\end{minipage}\hfill
+\begin{minipage}[t][255mm][s]{.489\textwidth}\vspace{0pt}
+\begin{karte}{13\enspace for-Schleife: über Elemente laufen}
+\begin{lstlisting}
+banken = ["ING", "CB", "DB"]
+for kuerzel in banken:
+    print(kuerzel)
+\end{lstlisting}
+\py{banken} ist die Liste; \py{kuerzel} steht nacheinander für \py{"ING"}, \py{"CB"} und \py{"DB"}. Der Block läuft \textbf{einmal pro Element}.\par Durchlaufbare Objekte heißen \textbf{Iterables}: z.\,B. Listen, Tupel, Strings und \py{range}.\par
+\textbf{Zahlen durchlaufen mit \py{range}}
+\begin{tabelle}{l X}
+\py{range(5)} & 0, 1, 2, 3, 4 \\
+\py{range(1, 6)} & 1, 2, 3, 4, 5 \\
+\py{range(0, 11, 2)} & 0, 2, 4, 6, 8, 10 \\
+\py{range(5, 0, -1)} & 5, 4, 3, 2, 1 \\
+\end{tabelle}
+\begin{lstlisting}
+for i in range(1, 4):
+    print(i)                # 1, 2, 3 untereinander
+\end{lstlisting}
+\py{range(start, ende, schritt)} schließt das Ende aus.\par Die Schrittweite darf nicht 0 sein.\par Für 1 bis einschließlich \py{n} gilt \py{range(1, n + 1)}.
+\end{karte}
+\vfill
+\begin{karte}{14\enspace while-Schleife: bedingt wiederholen}
+\begin{lstlisting}
+i = 1                       # Startwert
+while i <= 5:               # vor jedem Durchlauf prüfen
+    print(i)                # 1 bis 5 untereinander
+    i = i + 1               # Zähler fortschreiben
+print("Ende")
+\end{lstlisting}
+\textbf{Solange die Bedingung wahr ist}, wird wiederholt.\par Die Bedingung wird vor jedem Durchlauf geprüft.\par Im Beispiel läuft der Block jeweils vollständig durch.\par Den Zähler vorab setzen und im Block fortschreiben.
+\end{karte}
+\vfill
+\begin{karte}{15\enspace Abbrechen und Überspringen}
+\begin{minipage}[t]{.48\linewidth}\vspace{0pt}
+\textbf{Schleife beenden}
+\begin{lstlisting}
+for c in "bank":
+    if c == "n":
+        break
+    print(c)
+\end{lstlisting}
+Ausgabe: b, a
+\end{minipage}\hfill
+\begin{minipage}[t]{.48\linewidth}\vspace{0pt}
+\textbf{Durchlauf verkürzen}
+\begin{lstlisting}
+for c in "bank":
+    if c == "n":
+        continue
+    print(c)
+\end{lstlisting}
+Ausgabe: b, a, k
+\end{minipage}\par\smallskip
+Jeweils ein Buchstabe pro Ausgabezeile.\par
+\textbf{\py{break}} beendet die innerste Schleife sofort.\par
+\textbf{\py{continue}} überspringt den Rest dieses Durchlaufs.\par
+Bei \py{while} den Zähler auch bei \py{continue} fortschreiben, sonst droht eine Endlosschleife.
+\end{karte}
+\vfill
+\begin{karte}{16\enspace Einrückung und Verschachtelung}
+\textbf{Verschachtelung:} ein Block innerhalb eines anderen. Pro Ebene \textbf{vier Leerzeichen} mehr einrücken.\par\smallskip
+\begin{tikzpicture}[x=4.04pt,y=11pt]
+\draw[rule,line width=.6pt] (1.4,-.35)--(1.4,-3.2);
+\draw[accent,line width=.6pt] (5.4,-1.35)--(5.4,-2.2);
+\node[anchor=base west,inner sep=0pt] at (0,0) {\py{for zahl in [1, 2]:}};
+\node[anchor=base west,inner sep=0pt] at (4,-1) {\py{if zahl > 1:}};
+\node[anchor=base west,inner sep=0pt] at (8,-2) {\py{print(zahl)}};
+\node[anchor=base west,inner sep=0pt] at (4,-3) {\py{print("weiter")}};
+\node[anchor=base west,inner sep=0pt] at (0,-4) {\py{print("Ende")}};
+\node[anchor=base west,inner sep=0pt,font=\scriptsize\color{muted}] at (32,-1) {4 Leerzeichen};
+\node[anchor=base west,inner sep=0pt,font=\scriptsize\color{muted}] at (32,-2) {8 Leerzeichen};
+\end{tikzpicture}\par\smallskip
+\py{print("weiter")} liegt außerhalb des \py{if}-Blocks, aber in der Schleife; \py{print("Ende")} nach der Schleife.\par Die Hilfslinien gehören nicht zum Code.
+\end{karte}
+\input{zusatz.tex}
+\end{minipage}
+\end{document}

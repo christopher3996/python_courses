@@ -1,0 +1,19 @@
+% Beide letzten Themen stehen untereinander am Ende der rechten Spalte.
+\vfill
+\begin{karte}{17\enspace Eigene Funktionen}
+\begin{lstlisting}
+def endkapital(k0, zins, jahre):
+    return k0 * (1 + zins) ** jahre
+betrag = endkapital(1000, 0.07, 10)
+\end{lstlisting}
+\py{def} definiert; erst der \textbf{Aufruf} führt aus.\par \py{k0}, \py{zins} und \py{jahre} sind \textbf{Parameter}.\par Beim Aufruf erhalten sie der Reihe nach die Werte \py{1000}, \py{0.07} und \py{10}.\par \py{return} beendet die Funktion und liefert das Ergebnis; hier wird es in \py{betrag} gespeichert. \py{print()} zeigt nur an.
+\end{karte}
+\vfill
+\begin{karte}{18\enspace Bibliotheken verwenden}
+\begin{lstlisting}
+import math
+math.sqrt(256)              # 16.0
+math.ceil(2.3)              # 3
+\end{lstlisting}
+\py{import} lädt ein Modul. Zugriff über \py{modul.name}.\par \py{sqrt} berechnet die Wurzel; \py{ceil} rundet ganzzahlig auf.
+\end{karte}

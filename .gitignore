@@ -1,0 +1,23 @@
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
+.venv/
+.build/
+/tmp/
+# Lösungen bis zur separaten Freigabe lokal halten.
+/loesungen/
+
+# Python-, Editor- und LaTeX-Zwischenprodukte
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.swp
+*.swo
+*~
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
