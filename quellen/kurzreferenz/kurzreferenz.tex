@@ -69,7 +69,7 @@ text.lower()                # "hwr berlin"
 text.replace("HWR", "Uni")  # "Uni Berlin"
 text.split()                # ["HWR", "Berlin"]
 \end{lstlisting}
-\textbf{Strings sind unveränderbar.} Das bedeutet: Die Aufrufe liefern einen neuen String (bei \py{split()} eine Liste); der bisherige Wert von \py{text} bleibt erhalten. Ausgabe mit \py{print(...)}.\par
+\textbf{Strings bleiben unverändert.} Diese Methoden liefern einen neuen String (\py{split()} eine Liste) als \textbf{Rückgabewert}. Sie geben selbst nichts aus. Anzeigen mit \py{print(...)} oder als letztes Ergebnis einer Notebookzelle.\par
 \textbf{Zur dauerhaften Speicherung} das Ergebnis wieder der Variablen zuweisen:
 \begin{lstlisting}
 text = text.lower()
@@ -207,30 +207,33 @@ werte[1:3]                  # [20, 30]
 \py{sorted(folge)} & neue sortierte \textbf{Liste} \\
 \py{sum(folge)} & Summe \textbf{numerischer} Elemente \\
 \end{tabelle}
-\par\smallskip
-\textbf{Absteigend sortieren}\par
-\py{sorted(folge, reverse=True)}
+
 \end{karte}
 \vfill
 \begin{karte}{11\enspace Listen anlegen und verändern}
 \begin{lstlisting}
-a = []                      # leere Liste
-a = [7, 2, 5]               # Liste mit drei Elementen
+zahlen = []                 # leere Liste
+zahlen = [7, 2, 5]          # Liste mit drei Elementen
 \end{lstlisting}
-\textbf{Listen sind veränderbar.} Die folgenden Operationen bearbeiten die bestehende Liste.\par\smallskip
+\textbf{Verändern}\par Die Liste wird direkt geändert; die Methoden liefern \py{None}.\par\smallskip
+\begingroup\renewcommand{\arraystretch}{.95}
 \begin{tabelle}{l X}
-\py{a[i] = x} & Element an Index \py{i} ersetzen \\
-\py{a.append(x)} & ein Element hinten anhängen \\
-\py{a.insert(i, x)} & vor Index \py{i} einfügen \\
-\py{a.remove(x)} & erstes Vorkommen des Wertes entfernen \\
-\py{x = a.pop()} & letztes Element entfernen \textbf{und liefern} \\
-\py{a.pop(i)} & Element an Index \py{i} entfernen / liefern \\
-\py{del a[i]} & Element an Index \py{i} löschen \\
-\py{a.sort()} & Liste selbst aufsteigend sortieren \\
-\end{tabelle}
+\py{zahlen[i] = x} & Element an Index \py{i} ersetzen \\
+\py{zahlen.append(x)} & ein Element hinten anhängen \\
+\py{zahlen.insert(i, x)} & vor Index \py{i} einfügen \\
+\py{zahlen.remove(x)} & ersten passenden Wert entfernen \\
+\py{del zahlen[i]} & Element an Index \py{i} löschen \\
+\py{zahlen.sort()} & Liste selbst aufsteigend sortieren \\
+\py{zahlen.reverse()} & Reihenfolge der Liste umkehren \\
+\end{tabelle}\par\smallskip
+\textbf{Abfragen}\par Die Liste bleibt unverändert; das Ergebnis ist eine Zahl.\par
+\begin{tabelle}{l X}
+\py{zahlen.index(x)} & erste Position von \py{x} (muss vorkommen) \\
+\py{zahlen.count(x)} & Anzahl der Vorkommen von \py{x} \\
+\end{tabelle}\endgroup
 \par\smallskip
-\py{del a} entfernt den Variablennamen.\par
-Im Unterschied zu \py{a.sort()} liefert \py{sorted(a)} eine neue sortierte Liste; \py{a} bleibt dabei unverändert.
+Ergebnisse mit \py{print(...)} anzeigen.\par
+\py{sorted(zahlen)} liefert eine neue Liste; das Original bleibt erhalten.
 \end{karte}
 
 \vfill
@@ -242,7 +245,7 @@ tx = [["Alice", "Bob", 100.0, "EUR"],
 tx[0][2]                    # 100.0
 tx[0][2] = 125.0            # Zelle ändern
 tx.append(["Harry", "Bob", 50.0, "USD"])
-storniert = tx.pop()        # letzte Zeile entfernen
+del tx[-1]                  # letzte Zeile entfernen
 \end{lstlisting}
 \py{tabelle[zeile][spalte]} wählt erst die Zeile, dann die Spalte; beide ab 0. Eine Kopfzeile wird mitgezählt.
 \end{karte}
